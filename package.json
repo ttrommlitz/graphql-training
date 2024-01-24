@@ -1,0 +1,23 @@
+{
+  "name": "graph-ql-server-example",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "compile": "tsc",
+    "start": "npx ts-node --esm src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@apollo/server": "^4.3.0",
+    "graphql": "^16.6.0",
+    "ts-node": "^10.9.2"
+  },
+  "devDependencies": {
+    "@types/node": "^18.19.3",
+    "typescript": "^4.9.5"
+  }
+}
