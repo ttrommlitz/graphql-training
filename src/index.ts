@@ -9,14 +9,7 @@ const typeDefs = `
 
   type Book {
     title: String
-    author: Author
-    authorId: ID
-  }
-
-  type Author {
-    name: String
-    id: ID!
-    books: [Book]
+    author: String
   }
 
   type Query {
@@ -27,48 +20,26 @@ const typeDefs = `
 
 // data sources
 
-const authors = [
-  {
-    name: 'Kate Chopin',
-    id: 1
-  },
-  {
-    name: 'Paul Auster',
-    id: 2
-  },
-  {
-    name: 'Brandon Sanderson',
-    id: 3
-  }
-]
-
 const books = [
   {
     title: 'The Awakening',
-    authorId: 1,
+    author: 'Kate Chopin'
   },
   {
     title: 'City of Glass',
-    authorId: 2,
+    author: 'Paul Auster',
   },
   {
     title: 'Way of Kings',
-    authorId: 3
+    author: 'Brandon Sanderson'
   }
 ]
 
 // Resolvers define how to fetch the types defined in your schema.
-// This resolver retrieves books from the "books" array above.
 const resolvers = {
   Query: {
     books: () => books,
     getBookByTitle: (parent, args, contextValue, info) => books.find(book => book.title === args.title)
-  },
-  Book: {
-    author: (parent, args, contextValue, info) => authors.find(author => author.id === parent.authorId)
-  }, 
-  Author: {
-    books: (parent, args, contextValue, info) => books.filter(book => book.authorId === parent.id)
   }
 }
 
